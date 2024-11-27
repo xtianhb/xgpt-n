@@ -1,2 +1,3 @@
 # xlm
-Xtian Language Model
+XGTP-n
+Xtian GPT nano
