@@ -1,0 +1,8 @@
+matplotlib
+numpy
+black
+jupyter
+torch
+tqdm
+wandb
+tiktoken
