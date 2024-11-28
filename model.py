@@ -1,19 +1,20 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
+import re
 
 # hyperparameters
 batch_size = 16 # how many independent sequences will we process in parallel?
-block_size = 32 # what is the maximum context length for predictions?
-max_iters = 5000
+block_size = 64 # what is the maximum context length for predictions?
+max_iters = 1000
 eval_interval = 100
 learning_rate = 1e-3
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 eval_iters = 200
-n_embd = 64
-n_head = 4
-n_layer = 4
-dropout = 0.0
+n_embd = 32
+n_head = 8
+n_layer = 8
+dropout = 0.1
 # ------------
 
 torch.manual_seed(1337)
@@ -25,6 +26,10 @@ with open('data/quijote.txt', 'r', encoding='utf-8') as f:
 # here are all the unique characters that occur in this text
 chars = sorted(list(set(text)))
 vocab_size = len(chars)
+
+print(f'chars:<{chars}>')
+print(f'vocab_size: {vocab_size}')
+
 # create a mapping from characters to integers
 stoi = { ch:i for i,ch in enumerate(chars) }
 itos = { i:ch for i,ch in enumerate(chars) }
